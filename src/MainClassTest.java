@@ -3,21 +3,33 @@ import org.junit.Test;
 
 public class MainClassTest extends MainClass
 {
-    public int returned = getClassNumber();
-
     @Test
-    public void testGetClassNumber0()
+    public void testGetClassString0()
     {
-        if (returned > 45) {
-            System.out.println("testGetClassNumber0: Check passed! getClassNumber returns " + returned + ", which is more than 45");
+
+        if (getClassString().contains("Hello")) {
+            System.out.println("testGetClassString0: Yay! Test passed! There is 'Hello' in the string: " + getClassString());
+        } else if (getClassString().contains("hello")) {
+            System.out.println("testGetClassString0: Yay! Test passed! There is 'hello' in the string: " + getClassString());
         } else {
-            System.out.println("testGetClassNumber0: Check failed! getClassNumber returns " + returned + ", which is less than 45.");
+            System.out.println("testGetClassString0: Wrong! Test Failed. There is no 'hello' or 'Hello' in the string: " + getClassString());
         }
     }
 
     @Test
-    public void testGetClassNumber1()
+    public void testGetClassString1()
     {
-        Assert.assertTrue("testGetClassNumber1: Check failed! getClassNumber returns" + returned + ", which is less than 45.",returned > 45);
+        boolean hello;
+
+        if (getClassString().contains("Hello")) {
+            hello = true;
+        } else if (getClassString().contains("hello")) {
+            hello = true;
+        } else {
+            hello = false;
+        }
+
+        Assert.assertTrue("testGetClassString1: Wrong! Test Failed. There is no 'hello' or 'Hello' in the string: " + getClassString(), hello==true);
     }
 }
+
